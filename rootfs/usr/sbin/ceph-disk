@@ -1953,7 +1953,7 @@ def mkfs(
         [
             'chown',
             'ceph:ceph',
-            '/dev/sdb*'
+            '/dev/sdb*',
             ],
         )
 
