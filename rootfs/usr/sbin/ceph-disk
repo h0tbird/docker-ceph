@@ -1951,6 +1951,14 @@ def mkfs(
 
     command_check_call(
         [
+            'chown',
+            'ceph:ceph',
+            '/dev/sdb*'
+            ],
+        )
+
+    command_check_call(
+        [
             'ceph-osd',
             '--cluster', cluster,
             '--mkfs',
