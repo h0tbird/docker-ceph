@@ -1218,6 +1218,8 @@ def update_partition(dev, description):
     """
     LOG.debug('Calling partprobe on %s device %s', description, dev)
     command_check_call(['udevadm', 'settle'])
+    LOG.debug('Sleeping for 45 seconds!')
+    time.sleep(45)
     command_check_call(['partprobe', dev])
     command_check_call(['udevadm', 'settle'])
 
