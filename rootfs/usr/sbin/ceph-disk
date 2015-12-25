@@ -1258,7 +1258,7 @@ def update_partition(dev, description):
             if ('unable to inform the kernel' not in error and
                 'Device or resource busy' not in error):
                 raise
-            LOG.debug('partprobe %s failed : %s (ignored, waiting 60s)' % (dev, error))
+            LOG.debug('partprobe %s failed : %s (ignored, waiting 30s)' % (dev, error))
             time.sleep(30)
     if not partprobe_ok:
         raise Error('partprobe %s failed : %s' % (dev, error))
