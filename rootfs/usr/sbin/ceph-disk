@@ -1978,14 +1978,14 @@ def mkfs(
             ],
         )
 
-    command_check_call(
-        [
-            'chown',
-            'ceph:ceph',
-            '/dev/sdb1',
-            '/dev/sdb2',
-            ],
-        )
+    with open("/proc/mounts", "r") as f:
+        for line in f:
+            if path in line:
+                osd_dev = re.split('\s|[0-9]', line)[0]
+                command_check_call(
+                    ['chown', 'ceph:ceph',
+                    osd_dev + '1', osd_dev + '2'])
+                break
 
     command_check_call(
         [
